@@ -1,20 +1,7 @@
 import express from 'express';
 import {githubApi} from './services/index.js';
 import {combineReposWithTags, getDataDir, saveReposToFiles} from './utils/index.js';
-import {getAllReposNames, getRepoByName} from "./resource-access/index.js";
-
-/**
- * todos:
- * 1. Race conditions of file access
- * 2. Cache
- * 3. Configs / envs
- * 4. Proper structure with external services & utils & routes
- * 5. maybe tags could be fetched in a cron job separately (no need to block)
- * 6. Generic error handling for rest API
- * 7. Proper logging
- *
- * 8. In memory cache (a lot of files operations are slow)
- * */
+import {getAllReposNames, getRepoByName} from './resource-access/index.js';
 
 const dataDir = getDataDir();
 

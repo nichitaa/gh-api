@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "7f24c969-6812-4c5f-af58-c11c8d695045",
+		"name": "gh api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18673534"
+	},
+	"item": [
+		{
+			"name": "fetch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"count\": 20   \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/repositories/fetch"
+			},
+			"response": []
+		},
+		{
+			"name": "repositories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "repository",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/repositories/AutoGPT"
+			},
+			"response": []
+		}
+	]
+}

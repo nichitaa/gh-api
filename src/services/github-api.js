@@ -10,7 +10,6 @@ if (!process.env.GH_TOKEN) {
 
 class GithubApi {
 
-
   static REPOS_CACHE_TIME_MS = 1 * 60 * 1000; // 1 minutes
   static TAGS_CACHE_TIME_MS = 5 * 60 * 1000; // 5 minutes
   static REPOS_PER_PAGE = 10;
@@ -37,7 +36,8 @@ class GithubApi {
     const currentCount = await getCountOfSavedReposFiles();
     if (currentCount >= count && this.reposCacheFlag) {
       const repos = await getAllReposDetails();
-      const sortedRepos = repos.slice(0, count).sort((a, b) => b.stargazers_count - a.stargazers_count);
+      repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+      const sortedRepos = repos.slice(0, count)
       return {cache: true, repos: sortedRepos}
     } else {
       this.reposCacheFlag = true;
@@ -81,13 +81,15 @@ class GithubApi {
       console.error('[silent error] Failed to fetch tags for repo:', repo.name);
       return [];
     }
-    return response.data
+    const tagNames = response.data.map(tag => tag.name);
+    console.log('[get tags] fetched tags for repo:', repo.name, ', tags:', tagNames);
+    return tagNames;
   }
 
   listTagsForRepos = async (repos) => {
     const tagsResponsePromises = repos.map(repo => this.listTagsForRepo(repo));
     const tagsResponses = await Promise.all(tagsResponsePromises);
-    return tagsResponses.map(tagsResponse => tagsResponse.map(tag => tag.name));
+    return tagsResponses;
   }
 }
 
