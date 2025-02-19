@@ -1,0 +1,20 @@
+{
+  "name": "gh-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@octokit/plugin-retry": "^7.1.4",
+    "@octokit/plugin-throttling": "^9.4.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "octokit": "^4.1.2"
+  }
+}
